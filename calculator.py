@@ -1,18 +1,12 @@
-while True:
-    print ("OPTIONS : A for Calculation and B for Exit.")
-    choice = input("Type your choice : ") 
-    if choice == "A":
-        def number():
+def ask_number():
             while True:
                 num = input("Type a number :")
                 try:
                     x = float(num)
                     return(x)
                 except ValueError:
-                    print("ERROR")
-        n1 = number()
-        n2 = number()
-        def calculation(a,b):
+                    print("Type a number!")
+def calculation(a,b):
             while True:
                 op = input("Type your operation :")
                 if op == "+":
@@ -32,10 +26,16 @@ while True:
                         rem = a % b 
                         return(div,rem)
                 else:
-                    print("ERROR")
+                    print(op , "is not an operation!")
+while True:
+    print ("OPTIONS : A for Calculation and B for Exit.")
+    choice = input("Type your choice : ") 
+    if choice == "A":
+        n1 = ask_number()
+        n2 = ask_number()
         result = calculation(n1,n2)
         print(result)
     elif choice == "B":
         break
     else:
-        print("ERROR")
+        print(choice , "is not an option!")
