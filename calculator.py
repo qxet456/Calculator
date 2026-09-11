@@ -1,50 +1,41 @@
 while True:
-    print ("OPTIONS : 1 for Calculation and 2 for Exit.")
-    choice = input("Type your choice : ")
-    try: 
-        a = int(choice)
-        if a == 1:
+    print ("OPTIONS : A for Calculation and B for Exit.")
+    choice = input("Type your choice : ") 
+    if choice == "A":
+        def number():
             while True:
-                num1 = input("Type a number :")
+                num = input("Type a number :")
                 try:
-                    n1 = float(num1)
-                    break
+                    x = float(num)
+                    return(x)
                 except ValueError:
                     print("ERROR")
-            while True:               
-                num2 = input("Type a number :")
-                try:
-                    n2 = float(num2)
-                    break
-                except ValueError:
-                    print("ERROR")
+        n1 = number()
+        n2 = number()
+        def calculation(a,b):
             while True:
                 op = input("Type your operation :")
                 if op == "+":
-                    add = n1 + n2 
-                    print(add)
-                    break
+                    add = a + b 
+                    return(add)
                 elif op == "-":
-                    sub = n1 - n2 
-                    print(sub)
-                    break
+                    sub = a - b 
+                    return(sub)
                 elif op == "*":
-                    mul = n1 * n2 
-                    print(mul)
-                    break
+                    mul = a * b 
+                    return(mul)
                 elif op == "/":
-                    if n2 == 0:
-                        print("CANNOT DIVIDE BY ZERO")
+                    if b == 0:
+                        return("CANNOT DIVIDE BY ZERO")
                     else:
-                        div = n1 / n2 
-                        rem = n1 % n2
-                        print(div,rem)
-                        break
+                        div = a / b 
+                        rem = a % b 
+                        return(div,rem)
                 else:
                     print("ERROR")
-        elif a == 2:
-            break
-        else:
-            print ("ERROR")
-    except ValueError:
-        print ("ERROR") 
+        result = calculation(n1,n2)
+        print(result)
+    elif choice == "B":
+        break
+    else:
+        print("ERROR")
