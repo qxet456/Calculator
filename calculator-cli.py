@@ -2,7 +2,7 @@ def ask_number():
     while True:
         number = input("~ Type a number : ")
         try:
-            num = int(number)
+            num = float(number)
             return num
         except ValueError:
             print("Type a number!")
@@ -10,7 +10,7 @@ def ask_number():
 
 def addition(a, b):
     add = a + b
-    return add 
+    return add
 
 
 def subtraction(a, b):
@@ -31,36 +31,36 @@ def division(a, b):
         return div
 
 
-def operation():
-    print(
-        "===================="
-        "\n--- OPTIONS ---"
-        "\n 1. ADDITION = +"
-        "\n 2. SUBTRACTION = - "
-        "\n 3. MULTIPLICATION = *"
-        "\n 4. DIVISION = /"
-        "\n===================="
-    )
-    operation = input("Type your choice : ")
-    if operation == "+":
-        addition(num_one, num_two)
-        return addition(num_one, num_two)
-    elif operation == "-":
-        subtraction(num_one, num_two)
-        return subtraction(num_one, num_two)
-    elif operation == "*":
-        multiplication(num_one, num_two)
-        return multiplication(num_one, num_two)
-    elif operation == "/":
-        division(num_one, num_two)
-        return division(num_one, num_two)
-    else:
-        print(operation, "is not an option!")
+def ask_operation(x, y):
+    while True:
+        print(
+            "======================"
+            "\n--- OPTIONS ---"
+            "\n ADDITION = +"
+            "\n SUBTRACTION = - "
+            "\n MULTIPLICATION = *"
+            "\n DIVISION = /"
+            "\n===================="
+        )
+        operation = input("Type your choice : ")
+        if operation == "+":
+            return addition(x, y)
+        elif operation == "-":
+            return subtraction(x, y)
+        elif operation == "*":
+            return multiplication(x, y)
+        elif operation == "/":
+            return division(x, y)
+        else:
+            print(operation, "is not an option!")
+
+
+result = None
 
 
 while True:
     print(
-        "-------CALCULATOR------- "
+        "-------CALCULATOR--------"
         "\n <====================>"
         "\n -- OPTIONS --"
         "\n A. START"
@@ -72,10 +72,18 @@ while True:
     if choice == "A":
         num_one = ask_number()
         num_two = ask_number()
-        result = operation()
-        print(result)
+        result = ask_operation(num_one, num_two)
+        if result != None:
+            print(result)
     elif choice == "B":
-        print()
+        if result != None:
+            num_one = result
+            num_two = ask_number()
+            result = ask_operation(num_one, num_two)
+            if result != None:
+                print(result)
+        else:
+            print("No Previous Result!")
     elif choice == "C":
         break
     else:
