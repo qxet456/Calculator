@@ -42,7 +42,7 @@ def ask_operation(x, y):
             "\n DIVISION = /"
             "\n===================="
         )
-        operation = input("Type your choice : ")
+        operation = input("Type your choice : ").strip()
         if operation == "+":
             return addition(x, y)
         elif operation == "-":
@@ -68,23 +68,23 @@ while True:
         "\n C. EXIT"
         "\n <====================>"
     )
-    choice = input("Type your choice : ")
-    if choice == "A":
+    choice = input("Type your choice : ").strip()
+    if choice == "A" or choice == "a":
         num_one = ask_number()
         num_two = ask_number()
         result = ask_operation(num_one, num_two)
-        if result != None:
+        if result is not None:
             print(result)
-    elif choice == "B":
-        if result != None:
+    elif choice == "B" or choice == "b":
+        if result is not None:
             num_one = result
             num_two = ask_number()
             result = ask_operation(num_one, num_two)
-            if result != None:
+            if result is not None:
                 print(result)
         else:
-            print("No Previous Result!")
-    elif choice == "C":
+            print("No previous result!")
+    elif choice == "C" or choice == "c":
         break
     else:
         print(choice, "is not an option!")
